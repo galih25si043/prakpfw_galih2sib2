@@ -12,7 +12,7 @@ class MatakuliahController extends Controller
     }
     public function create()
     {
-                return 'Menampilkan form tambah matakuliah';
+                  return 'Form untuk menambahkan data matakuliah baru';
     }
     public function store(Request $request)
     {
