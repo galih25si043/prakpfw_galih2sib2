@@ -2,6 +2,8 @@
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MatakuliahController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -35,3 +37,5 @@ Route::get('/matakuliah/edit/{id}', [MatakuliahController::class, 'edit']);
 Route::put('/matakuliah/update/{id}', [MatakuliahController::class, 'update']);
 // Route untuk menghapus data
 Route::delete('/matakuliah/delete/{id}', [MatakuliahController::class, 'destroy']);
+
+Route::get('/home', [HomeController::class, 'index']);
