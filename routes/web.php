@@ -3,6 +3,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MatakuliahController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QuestionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,3 +40,6 @@ Route::put('/matakuliah/update/{id}', [MatakuliahController::class, 'update']);
 Route::delete('/matakuliah/delete/{id}', [MatakuliahController::class, 'destroy']);
 
 Route::get('/home', [HomeController::class, 'index']);
+
+Route::post('question/store', [QuestionController::class, 'store'])
+		->name('question.store');
