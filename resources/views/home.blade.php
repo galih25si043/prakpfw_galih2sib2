@@ -8,6 +8,7 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
+     <link rel="stylesheet" href="{{ asset('assets/css/custom-style.css') }}">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -56,7 +57,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">My Laravel App</a>
+            <a class="navbar-brand" font-custom href >My Laravel App</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -84,6 +85,7 @@
         <div class="container">
            <!--before -->
 <h1>Welcome Aboard</h1>
+<img src="{{ asset('assets/images/images.jpg') }}" alt="Logo">
 
 <!--after-->
 <h1> {{ $username }} </h1>
@@ -161,22 +163,35 @@
     <div class="card-body">
     
 <h5 class="card-title">Form Pertanyaan</h5>
+<div class="card-body">
+    <h5 class="card-title">Form Pertanyaan</h5>
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+</div>
 <form action="{{ route('question.store') }}" method="POST">
 	@csrf
 	
 ...
-            <div class="mb-3">
-                <label for="nama" class="form-label">Nama</label>
-                <input type="text" class="form-control" name="nama">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="text" class="form-control" name ="email"> 
-            </div>
-            <div class="mb-3">
-                <label for="pertanyaan" class="form-label">Pertanyaan</label>
-                <textarea class="form-control" rows="4" name="pertanyaan"></textarea>
-            </div>
+         <div class="mb-3">
+    <label for="nama" class="form-label">Nama</label>
+    <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}">
+</div>
+<div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}">
+</div>
+<div class="mb-3">
+    <label for="pertanyaan" class="form-label">Pertanyaan</label>
+    <textarea class="form-control" id="pertanyaan" name="pertanyaan" rows="4">{{ old('pertanyaan') }}</textarea>
+</div>
             <button type="submit" class="btn btn-primary">Kirim Pertanyaan</button>
         </form>
     </div>

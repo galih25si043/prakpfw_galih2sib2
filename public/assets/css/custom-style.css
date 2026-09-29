@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'fontgw';
+    src: url('assets/fonts/fontgw.ttf');
+     
+}
+
+.font-custom{
+    font-family: 'fontgw';
+}
