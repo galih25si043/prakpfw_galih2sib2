@@ -57,7 +57,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" font-custom href >My Laravel App</a>
+            <a class="navbar-brand font-custom"  href="#" >My Laravel App</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -84,7 +84,7 @@
     <section class="hero-section">
         <div class="container">
            <!--before -->
-<h1>Welcome Aboard</h1>
+<h1 class="navbar-brand font-custom"  href="#">Welcome Aboard</h1>
 <img src="{{ asset('assets/images/images.jpg') }}" alt="Logo">
 
 <!--after-->
@@ -160,9 +160,7 @@
 
             <div class="col-md-6">
                 <div class="card">
-    <div class="card-body">
-    
-<h5 class="card-title">Form Pertanyaan</h5>
+  
 <div class="card-body">
     <h5 class="card-title">Form Pertanyaan</h5>
 
