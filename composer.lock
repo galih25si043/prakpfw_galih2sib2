@@ -2135,6 +2135,7 @@
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon.git",
                 "reference": "a1c54919f5fff9800cd03c32bd01defd5a4061cb"
+                
             },
             "dist": {
                 "type": "zip",
