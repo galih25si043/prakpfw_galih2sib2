@@ -10,11 +10,30 @@ class PelangganController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $data['dataPelanggan'] = Pelanggan::all();
-        return view('admin.pelanggan.index', $data);
+    public function index(Request $request)
+{
+    $query = Pelanggan::query();
+
+    // 1. Logika Filter Gender
+    if ($request->filled('gender')) {
+        $query->where('gender', $request->gender);
     }
+
+    // 2. Logika Search (Nama depan, nama belakang, atau email)
+    if ($request->filled('search')) {
+        $search = $request->search;
+        $query->where(function($q) use ($search) {
+            $q->where('first_name', 'like', "%{$search}%")
+              ->orWhere('last_name', 'like', "%{$search}%")
+              ->orWhere('email', 'like', "%{$search}%");
+        });
+    }
+
+    // 3. Ambil data dengan Pagination & simpan Query String URL
+    $data['dataPelanggan'] = $query->paginate(10)->withQueryString();
+
+    return view('admin.pelanggan.index', $data);
+}
 
     /**
      * Show the form for creating a new resource.

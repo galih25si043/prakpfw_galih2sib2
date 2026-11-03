@@ -55,6 +55,8 @@
                             <tbody>
                                 @foreach ($dataPelanggan as $item)
                                     <tr>
+                                        <td>{{ ($dataPelanggan->currentPage() - 1) * $dataPelanggan->perPage() + $loop->iteration }}
+                                        </td>
                                         <td>{{ $item->first_name }}</td>
                                         <td>{{ $item->last_name }}</td>
                                         <td>{{ $item->birthday }}</td>
@@ -92,7 +94,59 @@
                                 @endforeach
 
                             </tbody>
+                            <div class="table-responsive">
+                                <form method="GET" action="{{ route('pelanggan.index') }}" class="mb-3">
+                                    <div class="row g-2 align-items-center">
+                                        <!-- Filter Gender -->
+                                        <div class="col-md-3 col-lg-2">
+                                            <select name="gender" class="form-select form-select-sm"
+                                                onchange="this.form.submit()">
+                                                <option value="">All Gender</option>
+                                                <option value="Male" {{ request('gender') == 'Male' ? 'selected' : '' }}>
+                                                    Male</option>
+                                                <option value="Female"
+                                                    {{ request('gender') == 'Female' ? 'selected' : '' }}>Female</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Input Search (Satu-satunya input carian yang digunakan) -->
+                                        <div class="col-md-4 col-lg-3">
+                                            <div class="input-group input-group-sm">
+                                                <input type="text" name="search" class="form-control"
+                                                    placeholder="Search..." value="{{ request('search') }}">
+                                                <button class="btn btn-outline-secondary" type="submit">Cari</button>
+                                            </div>
+                                </form>
+
+                                <!-- Terus ke Tag Jadual -->
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        ...
+                                    </table>
+                                </div>
+                                </form>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" name="search" class="form-control" id="exampleInputIconRight"
+                                            value="{{ request('search') }}" placeholder="Search" aria-label="Search">
+                                        <button type="submit" class="input-group-text" id="basic-addon2">
+                                            <svg class="icon icon-xxs" fill="currentColor" viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                </form>
+
+                                <table>...</table>
+                            </div>
                         </table>
+                        <div class="mt-3">
+                            {{ $dataPelanggan->links('pagination::simple-bootstrap-5') }}
+                        </div>
                     </div>
                 </div>
             </div>
